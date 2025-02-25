@@ -2,7 +2,7 @@
 if(isset($_GET['register'])){
     echo "<script src='js/sweetalert2.all.min.js'></script>
     <body onload='success()'></body>
-    <script> 
+    <script>
     function success(){
     Swal.fire({
          icon: 'success',
@@ -11,46 +11,56 @@ if(isset($_GET['register'])){
     }</script>";
 }
 
+if(isset($_POST['btn_save']))
+{
+    include('connectMySql.php');
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $contact_number = $_POST['contact_number'];
+    $birthdate = $_POST['birthdate'];
+    $status = 'ACTIVE';
 
-    if(isset($_POST['btn_save']))
-    {
-            include('connectMySql.php');
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $firstname = $_POST['firstname'];
-            $middlename = $_POST['middlename'];
-            $lastname = $_POST['lastname'];
-            $email = $_POST['email'];
-            $contact_number = $_POST['contact_number'];
-            $birthdate = $_POST['birthdate'];
-            $status = 'ACTIVE';
-
-            $sql = "INSERT INTO users (
-                        username,
-                        password,
-                        firstname,
-                        middlename,
-                        lastname,
-                        email,
-                        contact_number,
-                        birthdate,
-                        status
-                                        ) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssssss",
-                        $username,
-                        $password,
-                        $firstname,
-                        $middlename,
-                        $lastname,
-                        $email,
-                        $contact_number,
-                        $birthdate,
-                        $status);
-            $stmt->execute();
-            header('location:register.php?register=1');
+    // Validation checks
+    if(empty($username) || empty($password) || empty($firstname) || empty($middlename) || empty($lastname) || empty($email) || empty($contact_number) || empty($birthdate)) {
+        echo "<script>alert('All fields are required.');</script>";
+    } elseif(strlen($password) < 8) {
+        echo "<script>alert('Password must be at least 8 characters long.');</script>";
+    } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Invalid email format.');</script>";
+    } elseif(!is_numeric($contact_number) || strlen($contact_number) < 10) {
+        echo "<script>alert('Contact number must be numeric and at least 10 digits long.');</script>";
+    } else {
+        $sql = "INSERT INTO users (
+                    username,
+                    password,
+                    firstname,
+                    middlename,
+                    lastname,
+                    email,
+                    contact_number,
+                    birthdate,
+                    status
+                                    )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssssss",
+            $username,
+            $password,
+            $firstname,
+            $middlename,
+            $lastname,
+            $email,
+            $contact_number,
+            $birthdate,
+            $status);
+        $stmt->execute();
+        header('location:register.php?register=1');
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
