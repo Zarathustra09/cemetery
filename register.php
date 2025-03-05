@@ -99,15 +99,7 @@ if(isset($_POST['btn_save']))
                             </div>
                             <form  method="post" enctype="multipart/form-data" class="user">
                             <div class="row">
-                            <div class="form-group col-6">
-                                        <label>Username: </label>
-                                        <input type="text" id="username" name="username" class="form-control"  required/>
-                                    </div>
 
-                                    <div class="form-group col-6">
-                                        <label>Password : </label>
-                                        <input type="password" id="password" name="password" class="form-control"  required/>
-                                    </div>
 
                                     <div class="form-group col-4">
                                         <label>Firstname: </label>
@@ -139,6 +131,16 @@ if(isset($_POST['btn_save']))
                                         <label>Date of Birth: </label>
                                         <input type="date" id="birthdate" name="birthdate" class="form-control"  required/>
                                     </div>
+
+                                <div class="form-group col-6">
+                                    <label>Username: </label>
+                                    <input type="text" id="username" name="username" class="form-control"  required/>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label>Password : </label>
+                                    <input type="password" id="password" name="password" class="form-control"  required/>
+                                </div>
                             </div>
 
                                 <hr>
