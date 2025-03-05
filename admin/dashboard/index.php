@@ -24,7 +24,14 @@ if(logged_in()){
     <script src="../../js/sweetalert2.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-
+    <style>
+        .table th, .table td {
+            font-size: 1.2rem; /* Increase font size for table content */
+        }
+        .text-lg {
+            font-size: 1.2rem; /* Increase font size for text-lg class */
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -55,7 +62,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-warning text-uppercase mb-1">
                                                     Reserved</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM grave_slot WHERE status = 'RESERVED' ";
@@ -78,7 +85,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-info text-uppercase mb-1">
                                                     Available</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM grave_slot WHERE status = 'AVAILABLE' ";
@@ -102,7 +109,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-danger text-uppercase mb-1">
                                                     Not Available</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM grave_slot WHERE status = 'NOT AVAILABLE' ";
@@ -125,7 +132,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-success text-uppercase mb-1">
                                                     Taken</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM grave_slot WHERE status = 'TAKEN' ";
@@ -155,7 +162,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-warning text-uppercase mb-1">
                                                 PENDING</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM request WHERE status = 'PENDING' ";
@@ -178,7 +185,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-success text-uppercase mb-1">
                                                     APPROVED</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM request WHERE status = 'APPROVED' ";
@@ -201,7 +208,7 @@ if(logged_in()){
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                <div class="text-lg font-weight-bold text-danger text-uppercase mb-1">
                                                     DECLINED</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                             $query = "SELECT count(id) as total FROM request WHERE status = 'DECLINED' ";
